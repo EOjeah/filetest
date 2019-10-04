@@ -4,17 +4,17 @@ import os
 def get_file(data):
     pass
 def change_filename(input_filename, output_filename):
-    with open('csv_old_file.csv', mode='r') as file:  
+    with open(input_filename, mode='r') as file:  
         next(file)
         for line in file:
             line = line.replace('"','').replace('\n', '')
             line = line.split(",")
             line = '"' + line[0] + '"' + ',' + '"' + '-'.join(line[1:]) + '"'
-            with open('csv_new_file.csv', mode='a') as new_file:
+            with open(output_filename, mode='a') as new_file:
                 new_file.write(line)
                 new_file.write("\n")
    
-    with open('csv_new_file.csv', mode='rb+') as new_file:
+    with open(output_filename, mode='rb+') as new_file:
         new_file.seek(-1, os.SEEK_END)
         new_file.truncate()
     
