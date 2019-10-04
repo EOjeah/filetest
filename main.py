@@ -25,4 +25,5 @@ if __name__ == "__main__":
     for x in os.listdir(os.getcwd()):
         if x.find(".csv")!=-1:
             path_file=os.path.join(os.getcwd(),"result")
-            change_filename(x,path_file+x )
+            print (path_file)
+            change_filename(x,os.path.join(path_file,x))
