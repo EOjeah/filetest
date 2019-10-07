@@ -7,9 +7,13 @@ def change_filename(input_filename, output_filename):
     with open(input_filename, mode='r') as file:  
         next(file)
         for line in file:
-            line = line.replace('"','').replace('\n', '')
+            line = line.replace('\n', '')
             line = line.split(",")
-            line = '"' + line[0] + '"' + ',' + '"' + '-'.join(line[1:]) + '"'
+            line=line[0]+","+'"'+  '-'.join(line[1:]).replace('"','') +'"'
+
+
+
+            #line = '"' + line[0] + '"' + ',' + '"' + '-'.join(line[1:]) + '"'
             with open(output_filename, mode='a') as new_file:
                 new_file.write(line)
                 new_file.write("\n")
